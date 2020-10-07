@@ -1,4 +1,6 @@
 # Boilerplate
 
 ## Features
+
 - logger
+- prettier

@@ -8,19 +8,17 @@ import { environment } from '../environments/environment';
 import { hmrOnInit, hmrOnDestroy, hmrAfterOnDestroy } from '../hmr';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoggerModule.forRoot({ level: environment.logLevel }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) { }
+  constructor(public appRef: ApplicationRef) {}
 
   hmrOnInit = (store) => hmrOnInit(store, this.appRef);
   hmrOnDestroy = (store) => hmrOnDestroy(store, this.appRef);
