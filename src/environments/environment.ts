@@ -6,7 +6,8 @@ import { NgxLoggerLevel } from 'ngx-logger';
 
 export const environment: Environment = {
   production: false,
-  logLevel: NgxLoggerLevel.TRACE
+  logLevel: NgxLoggerLevel.TRACE,
+  hmr: true
 };
 
 /*

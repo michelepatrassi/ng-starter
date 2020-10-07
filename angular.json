@@ -33,6 +33,7 @@
             "scripts": []
           },
           "configurations": {
+            "dev": {},
             "production": {
               "fileReplacements": [
                 {
@@ -66,9 +67,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "boilerplate:build"
+            "browserTarget": "boilerplate:build",
+            "hmrWarning": false
           },
           "configurations": {
+            "dev": {
+              "hmr": true,
+              "browserTarget": "boilerplate:build"
+            },
             "production": {
               "browserTarget": "boilerplate:build:production"
             }
@@ -123,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "boilerplate"
+    }
+  },
+  "defaultProject": "boilerplate",
+  "cli": {
+    "analytics": "bb37edbc-a2ef-4d77-8efe-722d67fae5ee"
+  }
 }
