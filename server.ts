@@ -1,3 +1,4 @@
+// These are important and needed before anything else
 import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
@@ -7,6 +8,10 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+
+// Polyfills required for Firebase
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xhr2');
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -44,13 +49,17 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env.PORT || 4000;
+  if (!process.env.FUNCTION_NAME) {
+    const port = process.env.PORT || 4000;
 
-  // Start up the Node server
-  const server = app();
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
+    // Start up the Node server
+    const server = app();
+    server.listen(port, () => {
+      console.log(`Node Express server listening on http://localhost:${port}`);
+    });
+  } else {
+    console.log(`Running in cloud functions environment`);
+  }
 }
 
 // Webpack will replace 'require' with '__webpack_require__'
