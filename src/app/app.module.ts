@@ -9,7 +9,7 @@ import { hmrOnInit, hmrOnDestroy, hmrAfterOnDestroy } from '../hmr';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, LoggerModule.forRoot({ level: environment.logLevel })],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, LoggerModule.forRoot({ level: environment.logLevel })],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -15,13 +15,15 @@ const main = () => {
 
   if (environment.hmr) {
     if (module['hot']) {
-      return hmrBootstrap(module, bootstrap);
+      return hmrBootstrap(module, bootstrap).catch((err) => console.log(err));
     } else {
       console.error('HMR is not enabled for webpack-dev-server!');
       console.log('Are you using the --hmr flag for ng serve?');
     }
   } else {
-    bootstrap().catch((err) => console.log(err));
+    document.addEventListener('DOMContentLoaded', () => {
+      bootstrap().catch((err) => console.log(err));
+    });
   }
 };
 
