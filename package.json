@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng run boilerplate:serve:dev",
     "build": "ng build",
+    "build:prod": "NODE_ENV=production npm run build -- --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -20,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
     "@angularclass/hmr": "^3.0.0",
+    "@garygrossgarten/ngx-tailwind": "^0.4.0",
     "ngx-logger": "^4.1.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -40,7 +42,12 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ngx-build-plus": "latest",
+    "postcss-import": "latest",
+    "postcss-loader": "latest",
+    "postcss-scss": "latest",
     "protractor": "~7.0.0",
+    "tailwindcss": "latest",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
