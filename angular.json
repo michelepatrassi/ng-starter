@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "boilerplate": {
+    "ng-starter": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/boilerplate/browser",
+            "outputPath": "dist/ng-starter/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,7 +68,7 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "boilerplate:build",
+            "browserTarget": "ng-starter:build",
             "hmrWarning": false,
             "extraWebpackConfig": "./webpack.config.js"
           },
@@ -77,14 +77,14 @@
               "hmr": true
             },
             "production": {
-              "browserTarget": "boilerplate:build:production"
+              "browserTarget": "ng-starter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "boilerplate:build"
+            "browserTarget": "ng-starter:build"
           }
         },
         "test": {
@@ -108,18 +108,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "boilerplate:serve"
+            "devServerTarget": "ng-starter:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "boilerplate:serve:production"
+              "devServerTarget": "ng-starter:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/boilerplate/server",
+            "outputPath": "dist/ng-starter/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -140,21 +140,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "boilerplate:build",
-            "serverTarget": "boilerplate:server"
+            "browserTarget": "ng-starter:build",
+            "serverTarget": "ng-starter:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "boilerplate:build:production",
-              "serverTarget": "boilerplate:server:production"
+              "browserTarget": "ng-starter:build:production",
+              "serverTarget": "ng-starter:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "boilerplate:build:production",
-            "serverTarget": "boilerplate:server:production",
+            "browserTarget": "ng-starter:build:production",
+            "serverTarget": "ng-starter:server:production",
             "routes": [
               "/"
             ]
@@ -166,7 +166,7 @@
       }
     }
   },
-  "defaultProject": "boilerplate",
+  "defaultProject": "ng-starter",
   "cli": {
     "analytics": "bb37edbc-a2ef-4d77-8efe-722d67fae5ee"
   }

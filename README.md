@@ -1,4 +1,4 @@
-# Boilerplate
+# ng-starter
 
 ## Features
 
@@ -6,3 +6,4 @@
 - prettier
 - tailwind (https://notiz.dev/blog/angular-10-with-tailwindcss)
 - eslint
+- SSR

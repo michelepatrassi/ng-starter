@@ -1,19 +1,19 @@
 {
-  "name": "boilerplate",
+  "name": "ng-starter",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng run boilerplate:serve:dev",
+    "start": "ng run ng-starter:serve:dev",
     "build": "ng build",
     "build:prod": "NODE_ENV=production npm run build -- --prod",
     "test": "ng test",
     "lint": "eslint --color \"src/**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run boilerplate:serve-ssr:dev",
-    "serve:ssr": "node dist/boilerplate/server/main.js",
-    "build:ssr": "ng build --prod && ng run boilerplate:server:production",
-    "prerender": "ng run boilerplate:prerender"
+    "dev:ssr": "ng run ng-starter:serve-ssr:dev",
+    "serve:ssr": "node dist/ng-starter/server/main.js",
+    "build:ssr": "ng build --prod && ng run ng-starter:server:production",
+    "prerender": "ng run ng-starter:prerender"
   },
   "private": true,
   "dependencies": {
