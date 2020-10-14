@@ -140,6 +140,7 @@
             ]
           },
           "configurations": {
+             "dev": {},
             "production": {
               "outputHashing": "media",
               "fileReplacements": [
@@ -160,6 +161,7 @@
             "serverTarget": "ng-starter:server"
           },
           "configurations": {
+            "dev": {},
             "production": {
               "browserTarget": "ng-starter:build:production",
               "serverTarget": "ng-starter:server:production"

@@ -4,18 +4,21 @@
   "scripts": {
     "ng": "ng",
     "start": "ng run ng-starter:serve:dev",
-    "build": "ng build && npm run build:ssr && npm run build:functions",
+    "start:server:": "ng run ng-starter:serve-ssr:dev",
+    "build:dev": "ng run ng-starter:build:dev",
+    "build:prod": "NODE_ENV=production ng run ng-starter:build:dev",
+    "build:server:dev": "ng run ng-starter:server:dev",
+    "build:server:prod": "NODE_ENV=production ng run ng-starter:server:production",
     "build:functions": "npm run --prefix functions build",
-    "build:prod": "NODE_ENV=production npm run build -- --prod",
+    "build:all:dev": "npm run build:dev && npm run build:server:dev && npm run build:functions",
+    "deploy": "rm -rf dist/ng-starter/browser/index.html && firebase deploy",
     "test": "ng test",
     "lint": "eslint --color \"src/**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run ng-starter:serve-ssr:dev",
     "serve:ssr": "node dist/ng-starter/server/main.js",
-    "build:ssr": "ng build --prod && ng run ng-starter:server:production",
-    "prerender": "ng run ng-starter:prerender",
-    "deploy": "rm -rf dist/ng-starter/browser/index.html && firebase deploy"
+    "prerender": "ng run ng-starter:prerender"
+    
   },
   "private": true,
   "dependencies": {
