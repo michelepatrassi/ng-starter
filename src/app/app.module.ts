@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
 import { hmrOnInit, hmrOnDestroy, hmrAfterOnDestroy } from '../hmr';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, LoggerModule.forRoot({ level: environment.logLevel })],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
+    LoggerModule.forRoot({ level: environment.logLevel }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -8,6 +8,15 @@ export const environment: Environment = {
   production: false,
   logLevel: NgxLoggerLevel.TRACE,
   hmr: true,
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+  },
 };
 
 /*
