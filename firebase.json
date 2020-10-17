@@ -21,7 +21,9 @@
     ]
   },
   "functions": {
-    "source": "functions"
+    "source": "functions",
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run pre-deploy"],
+    "postdeploy": ["npm --prefix \"$RESOURCE_DIR\" run post-deploy"]
   },
   "emulators": {
     "functions": {

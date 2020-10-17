@@ -2,8 +2,19 @@
 
 ## Features
 
+### Frontend
+
+- Angular Universal deployed on cloud functions
+- HMR
+- Tailwind (https://notiz.dev/blog/angular-10-with-tailwindcss)
 - logger (https://github.com/dbfannin/ngx-logger)
-- prettier
-- tailwind (https://notiz.dev/blog/angular-10-with-tailwindcss)
-- eslint
-- SSR
+
+### Backend
+
+- Cloud functions
+
+### Utils
+
+- shared TS lib
+- Eslint and prettier
+- deployment configuration to Cloud functions

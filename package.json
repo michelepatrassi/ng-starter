@@ -1,16 +1,16 @@
 {
-  "name": "ng-starter",
-  "version": "0.0.0",
+  "name": "@ng-starter/app",
   "scripts": {
     "ng": "ng",
-    "start": "ng run ng-starter:serve",
+    "start": "concurrently \"npm run build:shared -- -w\" \"ng run ng-starter:serve\" \"npm run build:functions -- -w\"",
     "start:server:dev": "ng run ng-starter:serve-ssr",
     "build:dev": "ng run ng-starter:build:dev",
     "build:prod": "NODE_ENV=production ng run ng-starter:build:dev",
     "build:server:dev": "ng run ng-starter:server:dev",
     "build:server:prod": "NODE_ENV=production ng run ng-starter:server:production",
     "build:functions": "npm run --prefix functions build",
-    "build:all:dev": "npm run build:dev && npm run build:server:dev && npm run build:functions",
+    "build:shared": "npm run --prefix shared build",
+    "build:all:dev": "npm run build:shared && npm run build:dev && npm run build:server:dev && npm run build:functions",
     "deploy": "rm -rf dist/ng-starter/browser/index.html && firebase deploy",
     "test": "ng test",
     "lint": "eslint --color \"src/**/*.ts\"",
@@ -18,9 +18,7 @@
     "e2e": "ng e2e",
     "serve:ssr": "node dist/ng-starter/server/main.js",
     "prerender": "ng run ng-starter:prerender"
-    
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.5",
     "@angular/common": "~10.1.5",
@@ -37,13 +35,14 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
-    "firebase": "^7.13.1"
+    "firebase": "^7.13.1",
+    "@ng-starter/shared": "file:shared"
   },
   "devDependencies": {
-    "@garygrossgarten/ngx-tailwind": "^0.4.0",
     "@angular-devkit/build-angular": "~0.1001.4",
     "@angular/cli": "~10.1.5",
     "@angular/compiler-cli": "~10.1.5",
+    "@garygrossgarten/ngx-tailwind": "^0.4.0",
     "@nguniversal/builders": "^10.1.0",
     "@nguniversal/express-engine": "^10.1.0",
     "@types/express": "^4.17.0",
@@ -54,6 +53,7 @@
     "@typescript-eslint/parser": "^4.4.0",
     "bufferutil": "^4.0.1",
     "codelyzer": "^6.0.0",
+    "concurrently": "^5.3.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
