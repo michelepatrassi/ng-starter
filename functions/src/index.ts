@@ -1,7 +1,8 @@
 import * as functions from 'firebase-functions';
 
-export const ssr = functions.https.onRequest((request, response) => {
-  const server = require(`${process.cwd()}/dist/ng-starter/server/main`).app();
-
-  return server(request, response);
-});
+export const ssr = functions.https.onRequest(
+  async (req, res) => await (await import('./http/ssr')).default(res, res),
+);
+export const example = functions.https.onRequest(
+  async (req, res) => await (await import('./http/example')).default(req, res),
+);
