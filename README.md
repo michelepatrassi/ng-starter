@@ -4,8 +4,9 @@
 
 ### Frontend
 
-- Angular Universal deployed on cloud functions
+- Angular Universal
 - HMR
+- AngularFire
 - Tailwind (https://notiz.dev/blog/angular-10-with-tailwindcss)
 - logger (https://github.com/dbfannin/ngx-logger)
 
