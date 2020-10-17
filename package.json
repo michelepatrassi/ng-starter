@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng run ng-starter:serve:dev",
-    "start:server:": "ng run ng-starter:serve-ssr:dev",
+    "start": "ng run ng-starter:serve",
+    "start:server:dev": "ng run ng-starter:serve-ssr",
     "build:dev": "ng run ng-starter:build:dev",
     "build:prod": "NODE_ENV=production ng run ng-starter:build:dev",
     "build:server:dev": "ng run ng-starter:server:dev",

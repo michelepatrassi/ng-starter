@@ -15,7 +15,7 @@ export class AppComponent {
     this.title$ = firestore
       .doc<{
         title: string;
-      }>('test/test')
+      }>('test/app')
       .valueChanges()
       .pipe(map((data) => data.title));
   }
