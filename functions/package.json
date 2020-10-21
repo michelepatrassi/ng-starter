@@ -1,7 +1,9 @@
 {
-  "name": "@ng-starter/functions",
+  "name": "@nbinar/functions",
   "scripts": {
-    "build": "rm -rf ./dist && cp -r ../dist . && tsc",
+    "prepare:build":"rm -rf ./dist && cp -r ../dist .",
+    "build": "npm run prepare:build && tsc",
+    "build:watch": "npm run prepare:build && tsc -w",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -18,7 +20,7 @@
     "firebase": "^7.23.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
-    "@ng-starter/shared": "file:../shared"
+    "@nbinar/shared": "file:../shared"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0",

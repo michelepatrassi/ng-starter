@@ -1,12 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LazyModule } from './lazy/lazy.module';
+import { ROUTES } from './consts/routes';
 
 const routes: Routes = [
   {
     path: 'lazy',
-    loadChildren: () => import('./lazy/lazy.module').then((m) => m.LazyModule),
+    loadChildren: () =>
+      import('./modules/lazy/lazy.module').then((m) => m.LazyModule),
   },
+  {
+    path: ROUTES.error.base,
+    loadChildren: () =>
+      import('./modules/error/error.module').then((m) => m.ErrorModule),
+  },
+  {
+    path: ROUTES.home.base,
+    loadChildren: () =>
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+  },
+  { path: '**', redirectTo: `/${ROUTES.error.base}/${ROUTES.error.notFound}` },
 ];
 
 @NgModule({
@@ -14,7 +26,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
     }),
-    LazyModule,
   ],
   exports: [RouterModule],
 })
