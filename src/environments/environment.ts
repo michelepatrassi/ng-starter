@@ -9,13 +9,13 @@ export const environment: Environment = {
   logLevel: NgxLoggerLevel.TRACE,
   hmr: true,
   firebase: {
-    apiKey: 'AIzaSyCVwlPMrGhyv4mi7BDuKifFUpxii0SX5yg',
-    authDomain: 'webinar-development-fa42e.firebaseapp.com',
-    databaseURL: 'https://webinar-development-fa42e.firebaseio.com',
-    projectId: 'webinar-development-fa42e',
-    storageBucket: 'webinar-development-fa42e.appspot.com',
-    messagingSenderId: '1036883961847',
-    appId: '1:1036883961847:web:9cf62dea897f8e36ae30f2',
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
   },
 };
 
