@@ -19,3 +19,17 @@
 - shared TS lib
 - Eslint and prettier
 - deployment configuration to Cloud functions
+
+# Usage
+
+## Initial setup
+
+- git clone git@github.com:michelepatrassi/ng-starter.git
+- git remote remove origin
+- create GitHub repo and initialize the repo
+- git remote add template git@github.com:michelepatrassi/ng-starter.git
+
+## Get latest updates
+
+- git fetch --all
+- git merge template/main
