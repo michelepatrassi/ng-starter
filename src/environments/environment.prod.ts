@@ -6,12 +6,15 @@ export const environment: Environment = {
   logLevel: NgxLoggerLevel.OFF,
   hmr: false,
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
+    emulator: false,
+    config: {
+      apiKey: '',
+      authDomain: '',
+      databaseURL: '',
+      projectId: '',
+      storageBucket: '',
+      messagingSenderId: '',
+      appId: '',
+    },
   },
 };

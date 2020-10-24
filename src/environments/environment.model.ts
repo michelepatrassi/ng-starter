@@ -5,12 +5,15 @@ export interface Environment {
   logLevel: NgxLoggerLevel;
   hmr: boolean;
   firebase: {
-    apiKey: string;
-    authDomain: string;
-    databaseURL: string;
-    projectId: string;
-    storageBucket: string;
-    messagingSenderId: string;
-    appId: string;
+    emulator: boolean;
+    config: {
+      apiKey: string;
+      authDomain: string;
+      databaseURL: string;
+      projectId: string;
+      storageBucket: string;
+      messagingSenderId: string;
+      appId: string;
+    };
   };
 }

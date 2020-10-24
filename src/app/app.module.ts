@@ -6,8 +6,12 @@ import { AppComponent } from './app.component';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
 import { hmrOnInit, hmrOnDestroy, hmrAfterOnDestroy } from '../hmr';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {
+  AngularFirestoreModule,
+  SETTINGS as FIRESTORE_SETTINGS,
+} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,10 +20,21 @@ import { AngularFireModule } from '@angular/fire';
     TransferHttpCacheModule,
     AppRoutingModule,
     LoggerModule.forRoot({ level: environment.logLevel }),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase.config),
     AngularFirestoreModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FIRESTORE_SETTINGS,
+      useValue: environment.firebase.emulator
+        ? {
+            host: 'localhost:8080',
+            ssl: false,
+          }
+        : undefined,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

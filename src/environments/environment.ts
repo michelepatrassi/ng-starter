@@ -9,13 +9,16 @@ export const environment: Environment = {
   logLevel: NgxLoggerLevel.TRACE,
   hmr: true,
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
+    emulator: true,
+    config: {
+      apiKey: '',
+      authDomain: '',
+      databaseURL: '',
+      projectId: '',
+      storageBucket: '',
+      messagingSenderId: '',
+      appId: '',
+    },
   },
 };
 
