@@ -19,6 +19,7 @@
 - shared TS lib
 - Eslint and prettier
 - deployment configuration to Cloud functions
+- firebase emulator
 
 # Usage
 
