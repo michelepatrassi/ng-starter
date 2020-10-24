@@ -9,8 +9,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "pre-deploy": "node pre-deploy.js",
-    "post-deploy": "node post-deploy.js"
+    "pre-deploy": "node lib/scripts/pre-deploy.js",
+    "post-deploy": "node lib/scripts/post-deploy.js"
   },
   "engines": {
     "node": "12"
