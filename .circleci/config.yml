@@ -126,7 +126,7 @@ jobs:
       - run:
           name: Set config variables
           command: >
-            npm run firebase -- functions:config:set --project=$FB_PROJECT_NAME_DEV
+            npm run firebase -- functions:config:set --project=$FB_PROJECT_NAME_DEV --token=$FB_TOKEN
             app.name=$MY_APP
       - run:
           name: Deploy to Firebase
@@ -150,7 +150,7 @@ jobs:
       - run:
           name: Set config variables
           command: >
-            npm run firebase -- functions:config:set --project=$FB_PROJECT_NAME
+            npm run firebase -- functions:config:set --project=$FB_PROJECT_NAME --token=$FB_TOKEN 
             app.name=$MY_APP
       - run:
           name: Deploy to Firebase
