@@ -76,6 +76,7 @@ jobs:
           root: .
           paths:
             - functions/lib
+            - functions/dist
 
   build_development:
     <<: *defaults
