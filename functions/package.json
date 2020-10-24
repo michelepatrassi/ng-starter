@@ -1,5 +1,5 @@
 {
-  "name": "@nbinar/functions",
+  "name": "@ng-starter/functions",
   "scripts": {
     "prepare:build": "rm -rf ./dist && cp -r ../dist .",
     "build": "npm run prepare:build && tsc",
@@ -20,7 +20,7 @@
     "firebase": "^7.23.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
-    "@nbinar/shared": "file:../shared"
+    "@ng-starter/shared": "file:../shared"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0",
