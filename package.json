@@ -5,7 +5,7 @@
     "start": "concurrently \"npm run build:shared:watch\" \"ng run ng-starter:serve\" \"npm run build:functions:watch\" \"npm run fb:start\"",
     "start:server:dev": "ng run ng-starter:serve-ssr",
     "build:dev": "ng run ng-starter:build:dev",
-    "build:prod": "NODE_ENV=production ng run ng-starter:build:dev",
+    "build:prod": "NODE_ENV=production ng run ng-starter:build:production",
     "build:server:dev": "ng run ng-starter:server:dev",
     "build:server:prod": "NODE_ENV=production ng run ng-starter:server:production",
     "build:functions": "npm run --prefix functions build",
