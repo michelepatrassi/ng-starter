@@ -11,13 +11,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies- # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies- # fallback to using the latest cache if no exact match is found
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}
 
   install_functions:
     <<: *defaults
@@ -83,8 +83,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - attach_workspace:
           at: .
       - run: npm run build:dev && npm run build:server:dev
@@ -99,8 +99,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - attach_workspace:
           at: .
       - run: npm run build:prod && npm run build:server:prod
@@ -117,8 +117,8 @@ jobs:
           at: .
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - restore_cache:
           keys:
             - v1-functions-dependencies-{{ checksum "functions/package.json" }}
@@ -141,8 +141,8 @@ jobs:
           at: .
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - restore_cache:
           keys:
             - v1-functions-dependencies-{{ checksum "functions/package.json" }}
