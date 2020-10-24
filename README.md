@@ -20,6 +20,7 @@
 - Eslint and prettier
 - deployment configuration to Cloud functions
 - firebase emulator
+- circleCI deployment
 
 # Usage
 

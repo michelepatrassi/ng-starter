@@ -1,0 +1,218 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12
+
+version: 2
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies- # fallback to using the latest cache if no exact match is found
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
+
+  install_functions:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-functions-dependencies-{{ checksum "functions/package.json" }}
+            - v1-functions-dependencies-
+      - run: cd functions && npm install
+      - save_cache:
+          paths:
+            - functions/node_modules
+          key: v1-functions-dependencies-{{ checksum "functions/package.json" }}
+
+  install_shared:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-shared-dependencies-{{ checksum "shared/package.json" }}
+            - v1-shared-dependencies-
+      - run: cd shared && npm install
+      - save_cache:
+          paths:
+            - shared/node_modules
+          key: v1-shared-dependencies-{{ checksum "shared/package.json" }}
+
+  build_shared:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-shared-dependencies-{{ checksum "shared/package.json" }}
+            - v1-shared-dependencies-
+      - run: cd shared && npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - shared/lib
+
+  build_functions:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-functions-dependencies-{{ checksum "functions/package.json" }}
+            - v1-functions-dependencies-
+      - attach_workspace:
+          at: .
+      - run: cd functions && npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - functions/lib
+
+  build_development:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - attach_workspace:
+          at: .
+      - run: npm run build:dev && npm run build:server:dev
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+
+  build_production:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - attach_workspace:
+          at: .
+      - run: npm run build:prod && npm run build:server:prod
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+
+  deploy_development:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - restore_cache:
+          keys:
+            - v1-functions-dependencies-{{ checksum "functions/package.json" }}
+            - v1-functions-dependencies-
+      - run:
+          name: Set config variables
+          command: >
+            npm run firebase -- functions:config:set
+            app.name=$MY_APP
+      - run:
+          name: Deploy to Firebase
+          command: |
+            npm run deploy -- --project=$FB_PROJECT_NAME_DEV --token=$FB_TOKEN
+
+  deploy_production:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - restore_cache:
+          keys:
+            - v1-functions-dependencies-{{ checksum "functions/package.json" }}
+            - v1-functions-dependencies-
+      - run:
+          name: Set config variables
+          command: >
+            npm run firebase -- functions:config:set
+            app.name=$MY_APP
+      - run:
+          name: Deploy to Firebase
+          command: |
+            npm run deploy -- --project=$FB_PROJECT_NAME --token=$FB_TOKEN
+
+workflows:
+  version: 2
+  deploy_development:
+    jobs:
+      - install:
+          filters:
+            branches:
+              only: develop
+      - install_functions:
+          filters:
+            branches:
+              only: develop
+      - install_shared:
+          filters:
+            branches:
+              only: develop
+      - build_shared:
+          requires:
+            - install_shared
+      - build_development:
+          requires:
+            - install
+            - build_shared
+      - build_functions:
+          requires:
+            - install_functions
+            - build_development
+      - deploy_development:
+          requires:
+            - build_functions
+
+  deploy_production:
+    jobs:
+      - install:
+          filters:
+            branches:
+              only: main
+      - install_functions:
+          filters:
+            branches:
+              only: main
+      - install_shared:
+          filters:
+            branches:
+              only: main
+      - build_shared:
+          requires:
+            - install_shared
+      - build_production:
+          requires:
+            - install
+            - build_shared
+      - build_functions:
+          requires:
+            - install_functions
+            - build_production
+      - deploy_development:
+          requires:
+            - build_functions
