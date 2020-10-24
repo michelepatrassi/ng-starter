@@ -1,7 +1,7 @@
 {
   "name": "@nbinar/functions",
   "scripts": {
-    "prepare:build":"rm -rf ./dist && cp -r ../dist .",
+    "prepare:build": "rm -rf ./dist && cp -r ../dist .",
     "build": "npm run prepare:build && tsc",
     "build:watch": "npm run prepare:build && tsc -w",
     "serve": "npm run build && firebase emulators:start --only functions",
