@@ -21,6 +21,7 @@
 - deployment configuration to Cloud functions
 - firebase emulator
 - circleCI deployment
+- autorun terminals (to enable, set `autorun: true` in `terminals.json`)
 
 # Usage
 
