@@ -20,6 +20,7 @@ export const environment: Environment = {
       appId: '',
     },
   },
+  domain: 'DOMAIN_NAME_DEV',
 };
 
 /*

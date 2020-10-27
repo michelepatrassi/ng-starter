@@ -16,4 +16,5 @@ export interface Environment {
       appId: string;
     };
   };
+  domain: string;
 }

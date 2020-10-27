@@ -22,6 +22,7 @@
 - firebase emulator
 - circleCI deployment
 - autorun terminals (to enable, set `autorun: true` in `terminals.json`)
+- utility services wrappers (e.g. meta, platform)
 
 # Usage
 

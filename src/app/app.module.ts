@@ -12,6 +12,7 @@ import {
 } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
           }
         : undefined,
     },
+    { provide: APP_BASE_HREF, useValue: '' },
   ],
   bootstrap: [AppComponent],
 })

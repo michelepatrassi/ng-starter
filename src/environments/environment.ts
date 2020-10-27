@@ -20,6 +20,7 @@ export const environment: Environment = {
       appId: '',
     },
   },
+  domain: 'http://localhost:4200',
 };
 
 /*
