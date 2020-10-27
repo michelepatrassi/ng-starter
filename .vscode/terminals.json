@@ -1,0 +1,26 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "Serve frontend",
+      "description": "Serve frontend",
+      "command": "ng run ng-starter:serve"
+    },
+    {
+      "name": "Build shared",
+      "description": "Build shared",
+      "command": "npm run build:shared:watch"
+    },
+    {
+      "name": "Build cloud functions",
+      "description": "Build cloud functions",
+      "command": "npm run build:functions:watch"
+    },
+    {
+      "name": "Firebase emulator",
+      "description": "Firebase emulator",
+      "command": "npm run fb:start"
+    }
+  ]
+}
