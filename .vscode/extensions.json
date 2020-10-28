@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode", 
-    "fabiospampinato.vscode-terminals"
+    "fabiospampinato.vscode-terminals",
+    "bradlc.vscode-tailwindcss"
   ]
 }
