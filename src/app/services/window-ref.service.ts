@@ -33,6 +33,7 @@ export class WindowRefService {
   }
 
   openInTab(url: string) {
-    return this.window.open(url, '_blank');
+    const newTab = this.window.open(url, '_blank');
+    return (newTab.opener = null);
   }
 }
