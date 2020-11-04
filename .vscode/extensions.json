@@ -2,6 +2,9 @@
   "recommendations": [
     "esbenp.prettier-vscode", 
     "fabiospampinato.vscode-terminals",
-    "bradlc.vscode-tailwindcss"
+    "ecmel.vscode-html-css",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag"
   ]
 }

@@ -37,3 +37,7 @@
 
 - git fetch --all
 - git merge template/main
+
+## Functions
+
+- add a .runtimeconfig.json in your functions folder for local config (https://firebase.google.com/docs/functions/local-emulator#set_up_functions_configuration_optional)
