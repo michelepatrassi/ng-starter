@@ -7,7 +7,6 @@ import { NgxLoggerLevel } from 'ngx-logger';
 export const environment: Environment = {
   production: false,
   logLevel: NgxLoggerLevel.TRACE,
-  hmr: true,
   firebase: {
     emulator: true,
     config: {

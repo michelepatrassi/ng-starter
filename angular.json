@@ -76,16 +76,11 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "ng-starter:build",
-            "hmrWarning": false,
-            "extraWebpackConfig": "./webpack.config.js",
-            "hmr": true
+            "extraWebpackConfig": "./webpack.config.js"
           },
           "configurations": {
-            "dev": {
-              "hmr": false
-            },
+            "dev": {},
             "production": {
-              "hmr": false,
               "browserTarget": "ng-starter:build:production"
             }
           }

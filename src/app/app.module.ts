@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ApplicationRef, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
-import { hmrOnInit, hmrOnDestroy, hmrAfterOnDestroy } from '../hmr';
 import {
   AngularFirestoreModule,
   SETTINGS as FIRESTORE_SETTINGS,
@@ -39,10 +38,4 @@ import { APP_BASE_HREF } from '@angular/common';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
-
-  hmrOnInit = (store) => hmrOnInit(store, this.appRef);
-  hmrOnDestroy = (store) => hmrOnDestroy(store, this.appRef);
-  hmrAfterDestroy = (store) => hmrAfterOnDestroy(store);
-}
+export class AppModule {}
