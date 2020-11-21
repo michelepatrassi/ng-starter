@@ -34,12 +34,13 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/platform-server": "~11.0.0",
     "@angular/router": "~11.0.0",
+    "@ng-starter/shared": "file:shared",
+    "angular-svg-icon": "^11.0.0",
+    "firebase": "^8.0.2",
     "ngx-logger": "^4.1.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "firebase": "^8.0.2",
-    "@ng-starter/shared": "file:shared"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.1",

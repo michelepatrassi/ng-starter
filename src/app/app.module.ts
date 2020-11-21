@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,8 +10,10 @@ import {
   SETTINGS as FIRESTORE_SETTINGS,
 } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
+import { SvgBrowserLoader } from './loaders/svg-browser-loader';
+import { AngularSvgIconModule, SvgLoader } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,14 @@ import { APP_BASE_HREF } from '@angular/common';
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFirestoreModule,
     HttpClientModule,
+    AngularSvgIconModule.forRoot({
+      loader: {
+        provide: SvgLoader,
+        useFactory: (transferState, http) =>
+          new SvgBrowserLoader(transferState, http),
+        deps: [TransferState, HttpClient],
+      },
+    }),
   ],
   providers: [
     {
